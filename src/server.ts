@@ -10,8 +10,6 @@ app.use(express.json())
 
 app.use(routes)
 
-const port = 3333
-
-app.listen(process.env.PORT || port, () => {
-  console.log(`🚀 Server ready at: http://localhost:${port}`)
+app.listen(process.env.PORT || 3333, () => {
+  console.log(`🚀 Server ready at: http://localhost:3333`)
 })
