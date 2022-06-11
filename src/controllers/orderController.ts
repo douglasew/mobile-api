@@ -65,6 +65,14 @@ class orderController {
 
     return res.json(orders)
   }
+
+  async deleteAll(req: Request, res: Response): Promise<Response> {
+    const orders = await prisma.order.deleteMany({
+      where: { status: false },
+    })
+
+    return res.status(200).json(orders)
+  }
 }
 
 export default new orderController()
