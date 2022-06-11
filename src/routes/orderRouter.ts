@@ -26,4 +26,4 @@ orderRouter.delete(`/orders/:id`, authMiddleware, orderController.delete)
 
 // Deletar todas as encomendas arquivadas
 
-orderRouter.delete(`/orders/:id`, authMiddleware, orderController.deleteAll)
+orderRouter.delete('/orders', authMiddleware, orderController.deleteAll)
