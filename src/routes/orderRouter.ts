@@ -10,13 +10,17 @@ orderRouter.post('/orders', authMiddleware, orderController.create)
 
 // Listar encomendas do arquivadas
 
-orderRouter.get(`/orders-filed/:id`, authMiddleware, orderController.filed)
+orderRouter.get(`/orders/filed/:id`, authMiddleware, orderController.filed)
 
 // Atualiza encomendas
 
 orderRouter.put(`/orders/:id`, authMiddleware, orderController.update)
 
 // Listar encomendas do usuário
+
+orderRouter.get(`/orders/user/:id`, authMiddleware, orderController.index)
+
+// Buscar uma encomenda
 
 orderRouter.get(`/orders/:id`, authMiddleware, orderController.show)
 

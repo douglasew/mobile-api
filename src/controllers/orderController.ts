@@ -22,7 +22,7 @@ class orderController {
     }
   }
 
-  async show(req: Request, res: Response): Promise<Response> {
+  async index(req: Request, res: Response): Promise<Response> {
     const { id } = req.params
 
     const orders = await prisma.order.findMany({
@@ -30,6 +30,16 @@ class orderController {
     })
 
     return res.json(orders)
+  }
+
+  async show(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params
+
+    const order = await prisma.order.findUnique({
+      where: { id: String(id) },
+    })
+
+    return res.json(order)
   }
 
   async filed(req: Request, res: Response): Promise<Response> {

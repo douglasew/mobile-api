@@ -35,7 +35,7 @@ class userController {
 
       return res.status(201).json(users)
     } catch (error) {
-      return res.json({
+      return res.status(400).json({
         error:
           'Someone already has this email address. Try using another email',
       })
@@ -58,7 +58,7 @@ class userController {
 
       return res.json(users)
     } catch (error) {
-      return res.json({ error: 'User does not exist' })
+      return res.status(400).json({ error: 'User does not exist' })
     }
   }
 
@@ -76,6 +76,22 @@ class userController {
           status,
           photo,
           password: passwordHash,
+        },
+      })
+
+      return res.json(usersUpdate)
+    } catch (error) {
+      return res.status(404).json({ error: 'User does not exist' })
+    }
+  }
+  async updatePhoto(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params
+    const { photo } = req.body
+    try {
+      const usersUpdate = await prisma.user.update({
+        where: { id: String(id) },
+        data: {
+          photo,
         },
       })
 

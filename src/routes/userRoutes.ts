@@ -25,6 +25,8 @@ userRouter.get(`/users/:id`, authMiddleware, userController.show)
 
 userRouter.put(`/users/:id`, authMiddleware, userController.update)
 
+userRouter.put(`/users/photo/:id`, authMiddleware, userController.updatePhoto)
+
 // Deletar um usuário
 
 userRouter.delete(`/users/:id`, authMiddleware, userController.delete)
